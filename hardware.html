@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(to right, #c219f0, #6a11cb); 
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: white !important;
+            text-shadow: none;
+        }
+        main {
+            padding: 20px;
+        }
+        .diagram-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .diagram-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            background: linear-gradient(to right, #6a11cb, #c219f0); /* 渐变颜色 */
+            -webkit-background-clip: text; /* 让背景裁剪到文字区域 */
+            -webkit-text-fill-color: transparent; /* 透明的文字填充色 */
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .section ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .section ul li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background: linear-gradient(to right, #6a11cb, #c219f0); /* 渐变从蓝紫色到紫色 */
+            color: white; /* 设置文字为白色 */
+            padding: 10px 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        .image-container {
+            display: flex; /* 使用 Flexbox 布局让图片并排显示 */
+            justify-content: left; /* 居中对齐图片 */
+            gap: 10px; /* 图片之间的间距 */
+        }
+        .image-container img {
+            width: 200px; /* 设置图片宽度一致 */
+            height: auto; /* 高度根据宽度自动调整比例 */
+            object-fit: cover; /* 确保图片填充且不变形 */
+            border: 1px solid #ddd; /* 可选：为图片添加边框 */
+            border-radius: 5px; /* 可选：为图片设置圆角 */
+        }
+    </style>
+</head>
+<style>
+    /* only turn the question <b> into its own line */
+    ul li > b {
+      display: block;
+      margin-bottom: 0.4em;   /* tweak to taste */
+    }
+  
+    /* slightly looser overall line spacing */
+    ul li {
+      line-height: 1.5;
+    }
+  </style>
+<body>
+    <header>
+        <h1>Hardware Requirements Specification</h1>
+    </header>
+    <main>
+        <div class="section">
+            <h2>HRS 01 - The system shall use the SAMW25 as the main microcontroller for processing and Wi-Fi communication.</h2>
+            <ul>
+                <li><b>Finished</b>
+                    <ul>
+                        <li>The project is based on the SAMW25, which provides overall system control.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>HRS 02 - The device shall include a weight sensor (such as HX711) connected via the I2C interface to measure water cup weight changes. </h2>
+            <ul>
+                <li><b>Fixed</b>
+                    <ul>
+                        <li>The weight sensor doesn't support I2C interface, we introduced an extra humidity&temperature sensor(AHT20) which is connected via the I2C interface.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>HRS 03 - The system shall provide real-time reminders using an RGB LED and a buzzer for visual and auditory alerts.</h2>
+            <ul>
+                <li><b>Fixed</b>
+                    <ul>
+                        <li>We abandoned the LED strip due to its complexity. As compensation, we adjusted the frequency of the buzzer sound to remind users in a more pleasant way. </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>HRS 04 - The device shall be powered by a single-cell 3.7V Li-Ion battery, with an onboard voltage regulator to provide 3.3V to the microcontroller and peripherals.</h2>
+            <ul>
+                <li><b>Finished</b>
+                    <ul>
+                        <li>The system ran smoothly when powered by a single-cell 3.7V Li-Ion battery, with an onboard voltage regulator to provide 3.3V and 5.9V to the microcontroller and peripherals. It is worth mentioning that due to the change of the value of a feedback resistor when designing the power regulator, the output voltage of 5V became 5.9V. However, after our test, this change will not affect the normal operation of the component.</li>
+                    </ul>
+                    <img src="eload.jpg" alt="motor" style="width: 800px; height: auto;">
+            </ul>
+        </div>
+        <div class="section">
+            <h2>HRS 05 - The hardware shall support Wi-Fi communication for syncing drinking data and receiving app settings.</h2>
+            <ul>
+                <li><b>Partially Finished</b>
+                    <ul>
+                        <li>All the sensors and actuators successfully supported Wi-Fi communication. Due to functional adjustments, we removed receiving app settings from our project.</li>
+                    </ul>
+                    See the demo video for supporting evidence.
+            </ul>
+        </div>
+        <div class="section">
+            <h2>HRS 06 - The system shall include a battery management circuit to ensure safe charging and operation of the Li-Ion battery.</h2>
+            <ul>
+                <li><b>Finished</b>
+                    <ul>
+                        <li>Please refer to HRS 04.</li>
+                    </ul>
+            </ul>
+        </div>        
+        <a href="index.html">Back to home page</a>
+    </main>
+    <footer>
+        <p>Copyrights reserved.</p>
+    </footer>
+</body>
+</html>

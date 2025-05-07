@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photos &amp; Screenshots</title>
+  <style>
+    /* Reset & base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+    }
+    a { color: #6a11cb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header & footer */
+    header, footer {
+      background: linear-gradient(to right, #6a11cb, #c219f0);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    header h1 { font-size: 2rem; }
+    footer p { font-size: 0.9rem; }
+
+    /* Main container */
+    main {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    /* Section styling */
+    .section + .section {
+      margin-top: 2rem;
+    }
+    .section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #6a11cb, #c219f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Figure & image cards */
+    figure {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    figure img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    figure figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Side-by-side image row */
+    .image-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .image-row figure {
+      flex: 1 1 45%;
+      padding: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Photos &amp; Screenshots</h1>
+  </header>
+
+  <main>
+    <!-- Full Project -->
+    <section class="section">
+      <h2>The Full Project</h2>
+      <figure>
+        <img src="SmartCoastPhoto.png" alt="SmartCoast Overview">
+        <figcaption>SmartCoast deployed in the field</figcaption>
+      </figure>
+    </section>
+
+    <!-- Block Diagram -->
+    <section class="section">
+      <h2>System-Level Block Diagram</h2>
+      <figure>
+        <img src="block_diagram.png" alt="System Block Diagram">
+        <figcaption>Power, sensors, SoC, and user interface</figcaption>
+      </figure>
+    </section>
+
+    <!-- PCBA Views -->
+    <section class="section">
+      <h2>Standalone PCBA Views</h2>
+      <div class="image-row">
+        <figure>
+          <img src="PCBA_top.jpg" alt="PCBA Top View">
+          <figcaption>Top side of the PCB assembly</figcaption>
+        </figure>
+        <figure>
+          <img src="PCBA_bottom.jpg" alt="PCBA Bottom View">
+          <figcaption>Bottom side of the PCB assembly</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Thermal -->
+    <section class="section">
+      <h2>Thermal Images Under Load</h2>
+      <figure>
+        <img src="Thermal_image.jpeg" alt="Thermal Camera">
+        <figcaption>Thermal camera view during operation</figcaption>
+      </figure>
+    </section>
+
+    <!-- Altium Designs Side by Side -->
+    <section class="section">
+      <h2>Altium Board Designs</h2>
+      <div class="image-row">
+        <figure>
+          <img src="2Dview.png" alt="Altium 2D View">
+          <figcaption>2D layout in Altium Designer</figcaption>
+        </figure>
+        <figure>
+          <img src="3Dview.png" alt="Altium 3D View">
+          <figcaption>3D render of the PCB</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Node-RED Side by Side -->
+    <section class="section">
+      <h2>Node-RED Interfaces</h2>
+      <div class="image-row">
+        <figure>
+          <img src="NodeRED_dashboard.png" alt="Node-RED Dashboard">
+          <figcaption>Real-time data dashboard in Node-RED</figcaption>
+        </figure>
+        <figure>
+          <img src="NodeRED_backend.png" alt="Node-RED Backend">
+          <figcaption>Flow logic in the Node-RED backend</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <p><a href="index.html">← Back to Home Page</a></p>
+  </main>
+
+  <footer>
+    <p>© 2025 SmartCoast Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
