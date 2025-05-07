@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(to right, #c219f0, #6a11cb); 
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: white !important;
+            text-shadow: none;
+        }
+        main {
+            padding: 20px;
+        }
+        .diagram-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .diagram-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            background: linear-gradient(to right, #6a11cb, #c219f0); /* 渐变颜色 */
+            -webkit-background-clip: text; /* 让背景裁剪到文字区域 */
+            -webkit-text-fill-color: transparent; /* 透明的文字填充色 */
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .section ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .section ul li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background: linear-gradient(to right, #6a11cb, #c219f0); /* 渐变从蓝紫色到紫色 */
+            color: white; /* 设置文字为白色 */
+            padding: 10px 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<style>
+    /* only turn the question <b> into its own line */
+    ul li > b {
+      display: block;
+      margin-bottom: 0.4em;   /* tweak to taste */
+    }
+  
+    /* slightly looser overall line spacing */
+    ul li {
+      line-height: 1.5;
+    }
+  </style>
+<body>
+    <header>
+        <h1>Product Summary</h1>
+    </header>
+    <main>
+        <div class="section">
+            <h2>Device Description</h2>
+            <ul>
+                <li>
+                    <b>Give a 2 sentence description of your device.</b> 
+                The Smart Coast is an IoT device designed to promote healthy hydration habits and help the user stay hydrated throughout the day to support energy and productivity.
+                </li>   
+                <li>
+                <b>What inspired you to do the project? What problem is your device solving?</b>
+                Noticing how easy it is to forget drinking enough water during a busy day—and how dehydration undermines energy and focus—sparked the idea for a smart, automated hydration coach. It tackles the common issue of untracked and irregular water intake by sensing each drink, logging consumption in real time to a mobile app, and alerting users when they’ve gone too long without sipping.
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Device Functionality</h2>
+            <ul>
+                <li>
+                    <b>Explain how your Internet-connected device is designed.</b> 
+                    <h4>1. Data Acquisition & Processing</h4>
+                    <ul>
+                      <li><strong>ADC Input:</strong> SAMW25 reads amplified load-cell output to detect cup weight.</li>
+                      <li><strong>I²C Sensor:</strong> SAMW25 polls AHT20 for temperature & humidity data.</li>
+                      <li><strong>On-Board Logic:</strong> Firmware filters readings, identifies “drink events,” and calculates ideal refill intervals.</li>
+                    </ul>
+                  
+                    <h4>2. Wi-Fi Connectivity</h4>
+                    <ul>
+                      <li><strong>SPI Link:</strong> SAMW25 controls the Wi-Fi module over SPI.</li>
+                      <li><strong>Data Upload:</strong> After each drink or on a schedule, JSON-formatted payload (timestamp, water volume, temp, humidity) is sent via HTTPS/MQTT to a cloud endpoint.</li>
+                    </ul>
+                  
+                    <h4>3. Remote Control & Feedback</h4>
+                    <ul>
+                      <li><strong>Cloud Sync:</strong> User settings (thresholds, alert intervals) are delivered from the cloud back to the SAMW25.</li>
+                      <li><strong>Buzzer Alerts:</strong> If the cup remains idle past the configured interval, SAMW25 drives a MOSFET to trigger the buzzer, closing the feedback loop.</li>
+                    </ul>
+                </li>   
+                <li>
+                <b>System-level block diagram</b>
+                <img src="block_diagram.png" 
+     alt="SmartCoast" 
+     style="max-width:1000px; width:100%; height:auto;">
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Challenges</h2>
+            <ul>
+                <li>
+                    <b>Where did you face difficulties? This could be in firmware, hardware, software, integration, etc.</b> 
+                    The FX1901 loadcell along with INA125P amplifier won't work as expected. The only way to maintain it's functionality is to add a 2.26V bias voltage, which is unacceptable for an IoT product. Besides, the LED strip was much more complex to use than we expected. Because we spent too much time on the loadcell before, we were unable to realize the intended function of the LED within the limited time. Moreover, we mistakenly hided all the designators on our PCBA, which 
+                </li>   
+                <li>
+                    <b>How did you overcome these challenges?</b>
+                    In the last few days before the demo, we decided to replace it with another loadcell. Although it was not as sensitive as expected, it worked fine. Although we weren't able to leverage LED strip, we adjusted the frequency of the buzzer sound to remind users in a more pleasant way.
+                </li>
+            </ul>
+        </div>
+                <div class="section">
+            <h2>Prototype Learnings</h2>
+            <ul>
+                <li>
+                    <b>What lessons did you learn by building and testing this prototype?</b> 
+                    One thing we learned is that we should never procrastinate on a problem for too long. If stuck at somewhere, just move forward and focus on other aspects of the project. Also, a more detailed time frame is needed to gurantee everything is settled down on time.
+                </li>   
+                <li>
+                <b>What would you do differently if you had to build this device again?</b>
+                If we had to build it again, we wouldn't spend so much time on the loadcell issue. The only reason we insisted on using the specific loadcell was its sensitivity. We should give up the pursuit of perfection and place more emphasis on ensuring that all functions of the device are normal. Meanwhile, we would make a more detailed time frame and follow it strictly. In this project, most of the work was done during the last few days before the demo day, which added unnecessary extra burden to us. We should distribute the tasks evenly throughout the semester.
+                </li>
+            </ul>
+        </div>
+                <div class="section">
+            <h2>Next Steps & Takeaways</h2>
+            <ul>
+                <li>
+                    <b>What steps are needed to finish or improve this project?</b> 
+                The first step is to add the LED strip to this project, since it should've been the most attractive and good-looking part of the project. Meanwhile, we would like to develop a multiple-coast system in which the data related to hydration will be synchronized to each coast. This enables seamless switching among different usage scenarios.
+                </li>   
+                <li>
+                <b>What did you learn in ESE5160 through the lectures, assignments, and this course-long prototyping project?</b>
+                The course deepened our understanding towards Internet-of-Things products, embedded systems and the interactions among hardware, firmware and software, it led us through the whole process of the inception of an idea to its implementation. We learned that being a good engineer requires many qualities, technical skill is only one of them. It requires resilience, cooperation and experience.
+                </li>
+            </ul>
+        </div>
+                <div class="section">
+            <h2>Project Links</h2>
+            <ul>
+                <li>
+                    <b>Provide a URL to your Node-RED instance for our review (make sure it’s running on your Azure instance!)</b> 
+                    <a href="https://github.com/ese5160/final-project-t26-hugging-overflow/blob/main/flows.json">Link to Node-RED instance</a>
+                    Our node-red needs to be started manually in PowerShell, so we post the configuration file to the Github repo for your review.
+                </li>   
+                <li>
+                <b>Provide the share link to your final PCBA on Altium 365.</b>
+                <a href="https://upenn-eselabs.365.altium.com/designs/51AD8762-0D87-4656-9C5B-0941BBEF68CC#design">Link to final PCBA</a>
+                </li>
+            </ul>
+        </div>
+
+        <a href="index.html">Back to home page</a>
+    </main>
+    <footer>
+        <p>Copyrights reserved.</p>
+    </footer>
+</body>
+</html>
