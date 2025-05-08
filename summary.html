@@ -128,11 +128,11 @@
             <ul>
                 <li>
                     <b>Where did you face difficulties? This could be in firmware, hardware, software, integration, etc.</b> 
-                    The FX1901 loadcell along with INA125P amplifier won't work as expected. The only way to maintain it's functionality is to add a 2.26V bias voltage, which is unacceptable for an IoT product. Besides, the LED strip was much more complex to use than we expected. Because we spent too much time on the loadcell before, we were unable to realize the intended function of the LED within the limited time. Moreover, we mistakenly hided all the designators on our PCBA, which 
+                    The FX1901 loadcell along with INA125P amplifier won't work as expected. The only way to maintain it's functionality is to add a 2.26V bias voltage, which is unacceptable for an IoT product. Besides, the LED strip was much more complex to use than we expected. Because we spent too much time on the loadcell before, we were unable to realize the intended function of the LED within the limited time. Moreover, we mistakenly hided all the designators on our PCBA, which seriously negatively affected the manufacturing process.
                 </li>   
                 <li>
                     <b>How did you overcome these challenges?</b>
-                    In the last few days before the demo, we decided to replace it with another loadcell. Although it was not as sensitive as expected, it worked fine. Although we weren't able to leverage LED strip, we adjusted the frequency of the buzzer sound to remind users in a more pleasant way.
+                    In the last few days before the demo, we decided to replace it with another loadcell. Although it was not as sensitive as expected, it worked fine. Although we weren't able to leverage LED strip, we adjusted the frequency of the buzzer sound to remind users in a more pleasant way. We added all the designators just in time with the assistance of TA.
                 </li>
             </ul>
         </div>
@@ -145,7 +145,7 @@
                 </li>   
                 <li>
                 <b>What would you do differently if you had to build this device again?</b>
-                If we had to build it again, we wouldn't spend so much time on the loadcell issue. The only reason we insisted on using the specific loadcell was its sensitivity. We should give up the pursuit of perfection and place more emphasis on ensuring that all functions of the device are normal. Meanwhile, we would make a more detailed time frame and follow it strictly. In this project, most of the work was done during the last few days before the demo day, which added unnecessary extra burden to us. We should distribute the tasks evenly throughout the semester.
+                We should use a more commonly adopted load cell solution so that even when issues arise, we can find more existing resources and debugging experiences. Additionally, we should pay attention to selecting LEDs that are easy to drive. The Adafruit Neopixel LED strip we previously chose requires complex control and heavily relies on Adafruit's proprietary libraries, making it very difficult to implement on our SAM W25. Therefore, we should use LEDs that are simpler to control and can be driven with just a single GPIO pin.
                 </li>
             </ul>
         </div>
@@ -154,11 +154,11 @@
             <ul>
                 <li>
                     <b>What steps are needed to finish or improve this project?</b> 
-                The first step is to add the LED strip to this project, since it should've been the most attractive and good-looking part of the project. Meanwhile, we would like to develop a multiple-coast system in which the data related to hydration will be synchronized to each coast. This enables seamless switching among different usage scenarios.
+                    The first step is to add the LED strip to this project, since it should've been the most attractive and good-looking part of the project. Meanwhile, we would like to develop a multiple-coaster system in which the data related to hydration will be synchronized to each coaster. This enables seamless switching among different usage scenarios. In addition, we should develop a custom algorithm that determines our notification behaviors based on the user's past drinking actions combined with temperature and humidity data.
                 </li>   
                 <li>
                 <b>What did you learn in ESE5160 through the lectures, assignments, and this course-long prototyping project?</b>
-                The course deepened our understanding towards Internet-of-Things products, embedded systems and the interactions among hardware, firmware and software, it led us through the whole process of the inception of an idea to its implementation. We learned that being a good engineer requires many qualities, technical skill is only one of them. It requires resilience, cooperation and experience.
+                The course deepened our understanding of Internet-of-Things products, embedded systems, and the interactions among hardware, firmware, and software; it led us through the whole process from inception of an idea to its implementation. Overall, this has given us greater confidence in developing hardware systems. It showed me that even complex IoT devices can be understood and built in a structured way, and that there are systematic methods for troubleshooting when problems arise.
                 </li>
             </ul>
         </div>

@@ -79,11 +79,11 @@
     </header>
     <main>
         <div class="section">
-            <h2>SRS 01 - The software shall read real-time data from the weight sensor via the I2C interface to track water consumption.</h2>
+            <h2>SRS 01 - The software shall read real-time data from the weight sensor via the I²C interface to track water consumption.</h2>
             <ul>
                 <li><b>Fixed</b> </li>
                 <ul>
-                    <li>The software reads real-time data from both the weight sensor via ADC, and the humidity& temperature sensor via the I2C interface.</li>
+                    <li>The software reads real-time data from both the weight sensor via ADC and the humidity & temperature sensor via the I²C interface.</li>
                 </ul>
             </ul>
         </div>
@@ -93,7 +93,7 @@
                 <li><b>Fixed</b>
                     <ul>
                         <li>The weight sensor could accurately detect the mass change of the water cup after each time the cup is removed from the coast. </li>
-                        <li>Removed timestamp.</li>
+                        <li>Removed timestamp logging.</li>
                     </ul>
                 </li>
             
@@ -104,7 +104,8 @@
             <ul>
                 <li><b>Fixed</b>
                     <ul>
-                        <li>Removed the timestamp</li>
+                        <li>Removed timestamp from the payload.</li>
+                        <li>Drinking amount is sent; see the Node-RED dashboard below for confirmation.</li>
                     </ul>
                     <img src="NodeRED_dashboard.png" alt="lcd1" style="width: 600px; height: auto;">
             </ul>
@@ -123,9 +124,9 @@
             <ul>
                 <li><b>Partially finished</b>
                     <ul>
-                        <li>The system only triggers buzzer reminders, we removed LED strip for its complexity and limited time.</li>
+                        <li>The system now only triggers buzzer reminders; the LED strip was removed due to its complexity and time constraints.</li>
                     </ul>
-                    Please refer to the demo video.
+                    See the demo video for evidence.
             </ul>
         </div>
                 <div class="section">
@@ -133,7 +134,7 @@
             <ul>
                 <li><b>Abandoned</b>
                     <ul>
-                        <li>The buzzer is enough to remind the user to drink water.
+                        <li>The buzzer alone is deemed sufficient to alert the user to drink water.
                         </li>
                     </ul>
             </ul>
@@ -144,7 +145,7 @@
             <ul>
                 <li><b>Abandoned</b>
                     <ul>
-                        <li>The system itself doesn't consume much power.</li>
+                        <li>The system’s baseline consumption is low enough that additional low-power modes were not implemented.</li>
                     </ul>
             </ul>
         </div>
